@@ -50,10 +50,10 @@ export default function TextHeart() {
         const pAngle = (Math.random() - 0.5) * 0.25;
         const randText = textOptions[Math.floor(Math.random() * textOptions.length)];
         
-        // Outline is bright Neon Red mixed with some Deep Crimson for depth
-        const isNeon = Math.random() > 0.35;
-        const color = isNeon ? `rgb(255, 10, 50)` : `rgb(140, 5, 20)`;
-        const shadowColor = isNeon ? `rgba(255, 0, 50, 0.95)` : `rgba(100, 0, 15, 0.75)`;
+        // Border is Neon Red (80% weight) mixed with some Crimson (20% weight)
+        const isNeon = Math.random() > 0.2;
+        const color = isNeon ? `rgb(255, 30, 79)` : `rgb(155, 17, 30)`; // #FF1E4F vs Crimson
+        const shadowColor = isNeon ? `rgba(255, 30, 79, 0.95)` : `rgba(120, 10, 20, 0.75)`;
         const targetAlpha = isNeon ? (0.75 + Math.random() * 0.25) : (0.45 + Math.random() * 0.25);
         const pShadowBlur = isNeon ? 15 : 8;
 
@@ -85,56 +85,47 @@ export default function TextHeart() {
           let pShadowBlur = 10;
           
           if (s <= 0.3) {
-            // Glowing Warm Yellow/Orange core
-            const rVal = Math.random();
-            if (rVal < 0.45) {
-              color = `rgb(255, 215, 0)`; // Glowing Golden Yellow
-              shadowColor = `rgba(255, 160, 0, 0.95)`;
-            } else if (rVal < 0.8) {
-              color = `rgb(255, 130, 0)`; // Neon Orange
-              shadowColor = `rgba(255, 60, 0, 0.95)`;
-            } else {
-              color = `rgb(255, 255, 200)`; // Highlight Bright Yellow-White
-              shadowColor = `rgba(255, 210, 80, 0.95)`;
-            }
-            targetAlpha = 0.8 + Math.random() * 0.2;
+            // Intense core: Off-white / light pink core with a vibrant pinkish-red glow
+            color = `rgb(255, 240, 243)`; 
+            shadowColor = `rgba(255, 30, 79, 0.95)`; // #FF1E4F glow
+            targetAlpha = 0.85 + Math.random() * 0.15;
             pShadowBlur = 15;
-          } else if (s <= 0.6) {
+          } else if (s <= 0.65) {
             // Neon Red and Magenta/Deep Pink
-            const isNeonRed = Math.random() > 0.5;
+            const isNeonRed = Math.random() > 0.6;
             if (isNeonRed) {
-              color = `rgb(255, 20, 60)`; // Neon Red
-              shadowColor = `rgba(255, 0, 50, 0.95)`;
+              color = `rgb(255, 30, 79)`; // Neon Red (#FF1E4F)
+              shadowColor = `rgba(255, 30, 79, 0.95)`;
             } else {
-              color = `rgb(255, 0, 128)`; // Magenta/Deep Pink
-              shadowColor = `rgba(255, 0, 128, 0.95)`;
+              color = `rgb(255, 0, 127)`; // Magenta / Deep Pink (#FF007F)
+              shadowColor = `rgba(255, 0, 127, 0.95)`;
             }
             targetAlpha = 0.65 + Math.random() * 0.3;
             pShadowBlur = 12;
           } else if (s <= 0.85) {
-            // Magenta/Deep Pink and Crimson/Deep Red shadows
-            const isMagenta = Math.random() > 0.6;
+            // Quinacridone Magenta and Crimson/Deep Red shadows
+            const isMagenta = Math.random() > 0.5;
             if (isMagenta) {
-              color = `rgb(255, 0, 100)`; // Magenta
-              shadowColor = `rgba(255, 0, 100, 0.85)`;
+              color = `rgb(227, 28, 121)`; // Quinacridone Magenta
+              shadowColor = `rgba(227, 28, 121, 0.85)`;
               pShadowBlur = 10;
             } else {
-              color = `rgb(160, 10, 25)`; // Crimson/Deep Red
+              color = `rgb(155, 17, 30)`; // Crimson/Deep Red (#9B111E)
               shadowColor = `rgba(120, 0, 15, 0.8)`;
               pShadowBlur = 7;
             }
             targetAlpha = 0.5 + Math.random() * 0.3;
           } else {
             // Outer boundaries: Crimson shadow blend with Neon Red highlights
-            const isCrimson = Math.random() > 0.35;
+            const isCrimson = Math.random() > 0.3;
             if (isCrimson) {
-              color = `rgb(110, 5, 12)`; // Crimson shadow
-              shadowColor = `rgba(70, 0, 5, 0.6)`;
-              targetAlpha = 0.35 + Math.random() * 0.25;
+              color = `rgb(110, 5, 12)`; // Deep Crimson shadow
+              shadowColor = `rgba(70, 0, 5, 0.55)`;
+              targetAlpha = 0.3 + Math.random() * 0.25;
               pShadowBlur = 5;
             } else {
-              color = `rgb(255, 10, 50)`; // Neon Red highlight
-              shadowColor = `rgba(255, 0, 50, 0.85)`;
+              color = `rgb(255, 30, 79)`; // Neon Red highlight
+              shadowColor = `rgba(255, 30, 79, 0.85)`;
               targetAlpha = 0.55 + Math.random() * 0.25;
               pShadowBlur = 12;
             }
