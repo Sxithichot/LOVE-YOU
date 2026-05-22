@@ -118,7 +118,7 @@ export default function App() {
               className="z-20 text-center"
             >
               <h2 className="text-white font-mono text-xl tracking-[0.3em] uppercase glow-text mb-2">
-                Decrypted
+                LOVE-YOU
               </h2>
               <div className="w-12 h-px bg-pink-deep/30 mx-auto mb-8" />
               
