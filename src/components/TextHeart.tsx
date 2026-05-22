@@ -25,19 +25,25 @@ export default function TextHeart() {
 
     let animationFrameId: number;
     let points: Point[] = [];
-    const baseFontSize = 14;
+    let currentScale = 1;
+    const getBaseFontSize = (scale: number) => {
+      return Math.max(9, Math.min(14, scale * 0.7));
+    };
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
       initPoints();
     };
 
     const initPoints = () => {
       points = [];
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const scale = Math.min(canvas.width, canvas.height) / 45;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      currentScale = Math.min(window.innerWidth, window.innerHeight) / 45;
+      const scale = currentScale;
 
       const textOptions = ["i love you", "I love you", "love you"];
 
@@ -174,6 +180,7 @@ export default function TextHeart() {
           ctx.shadowBlur = p.shadowBlur;
           ctx.shadowColor = p.shadowColor;
           
+          const baseFontSize = getBaseFontSize(currentScale);
           const currentFontSize = baseFontSize * p.scale;
           ctx.font = `${currentFontSize}px "Fira Code", monospace`;
           ctx.fillStyle = p.color;
