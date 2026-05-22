@@ -35,7 +35,7 @@ export default function App() {
   return (
     <div 
       onClick={handleReveal}
-      style={stage === 'reveal' ? { background: 'radial-gradient(circle at center, rgba(140, 15, 30, 0.45) 0%, rgba(5, 5, 5, 1) 75%)' } : {}}
+      style={stage === 'reveal' ? { background: 'radial-gradient(circle at center, rgba(160, 10, 30, 0.35) 0%, rgba(100, 5, 15, 0.15) 50%, rgba(5, 5, 5, 1) 85%)' } : {}}
       className={`relative min-h-screen w-full flex items-center justify-center bg-[#050505] selection:bg-pink-deep/30 transition-all duration-1000 ${stage === 'console' && consoleFinished ? 'cursor-pointer' : ''}`}
     >
       <div className="scanline" />
