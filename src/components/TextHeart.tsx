@@ -59,7 +59,7 @@ export default function TextHeart() {
 
         points.push({
           x: centerX + x * scale,
-          y: centerY + y * scale,
+          y: centerY + y * scale - 6 * scale,
           alpha: 0,
           targetAlpha: targetAlpha,
           delay: Math.random() * 2000,
@@ -148,7 +148,7 @@ export default function TextHeart() {
 
           points.push({
             x: centerX + x * scale * s,
-            y: centerY + y * scale * s,
+            y: centerY + y * scale * s - 6 * scale,
             alpha: 0,
             targetAlpha: targetAlpha,
             delay: Math.random() * 2500,
