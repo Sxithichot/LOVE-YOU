@@ -35,7 +35,8 @@ export default function App() {
   return (
     <div 
       onClick={handleReveal}
-      className={`relative min-h-screen w-full flex items-center justify-center bg-[#050505] selection:bg-pink-deep/30 ${stage === 'console' && consoleFinished ? 'cursor-pointer' : ''}`}
+      style={stage === 'reveal' ? { background: 'radial-gradient(circle at center, rgba(140, 15, 30, 0.45) 0%, rgba(5, 5, 5, 1) 75%)' } : {}}
+      className={`relative min-h-screen w-full flex items-center justify-center bg-[#050505] selection:bg-pink-deep/30 transition-all duration-1000 ${stage === 'console' && consoleFinished ? 'cursor-pointer' : ''}`}
     >
       <div className="scanline" />
       
@@ -116,7 +117,7 @@ export default function App() {
               transition={{ delay: 3, duration: 1.5 }}
               className="z-20 text-center"
             >
-              <h2 className="text-pink-deep font-mono text-xl tracking-[0.3em] uppercase glow-text mb-2">
+              <h2 className="text-white font-mono text-xl tracking-[0.3em] uppercase glow-text mb-2">
                 Decrypted
               </h2>
               <div className="w-12 h-px bg-pink-deep/30 mx-auto mb-8" />
