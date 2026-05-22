@@ -176,19 +176,26 @@ export default function TextHeart() {
           ctx.save();
           ctx.globalAlpha = p.alpha;
           
-          // Apply custom glow
-          ctx.shadowBlur = p.shadowBlur;
-          ctx.shadowColor = p.shadowColor;
-          
           const baseFontSize = getBaseFontSize(currentScale);
           const currentFontSize = baseFontSize * p.scale;
           ctx.font = `${currentFontSize}px "Fira Code", monospace`;
-          ctx.fillStyle = p.color;
           
           ctx.translate(p.x, p.y);
           ctx.rotate(p.angle);
           
           const textWidth = ctx.measureText(p.text).width;
+          
+          // --- Pass 1: Neon Glow Background (Thick Aura) ---
+          ctx.save();
+          ctx.shadowBlur = p.shadowBlur * 1.8;
+          ctx.shadowColor = p.shadowColor;
+          ctx.fillStyle = p.shadowColor;
+          ctx.fillText(p.text, -textWidth / 2, currentFontSize / 2);
+          ctx.fillText(p.text, -textWidth / 2, currentFontSize / 2);
+          ctx.restore();
+          
+          // --- Pass 2: High-contrast Sharp Foreground Core ---
+          ctx.fillStyle = p.color;
           ctx.fillText(p.text, -textWidth / 2, currentFontSize / 2);
           
           ctx.restore();
@@ -212,6 +219,9 @@ export default function TextHeart() {
     <canvas 
       ref={canvasRef} 
       className="fixed inset-0 w-full h-full pointer-events-none"
+      style={{
+        filter: 'drop-shadow(0 0 5px rgba(255, 30, 79, 0.4)) drop-shadow(0 0 15px rgba(255, 0, 127, 0.2))'
+      }}
     />
   );
 }
